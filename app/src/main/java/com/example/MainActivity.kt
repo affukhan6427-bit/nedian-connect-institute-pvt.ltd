@@ -90,6 +90,9 @@ import com.example.ui.screens.CoursesScreen
 import com.example.ui.screens.FaqScreen
 import com.example.ui.screens.FeeTableScreen
 import com.example.ui.screens.HomeScreen
+import com.example.ui.screens.JobApplyScreen
+import com.example.ui.screens.OnlineLanguageClassesScreen
+import com.example.ui.screens.PlacementsScreen
 import com.example.ui.screens.WhyChooseUsScreen
 import com.example.ui.theme.NedianTheme
 import kotlinx.coroutines.launch
@@ -98,6 +101,9 @@ enum class Screen(val title: String, val icon: ImageVector) {
   HOME("Home", Icons.Default.Home),
   FEES("Fees Table", Icons.Default.LocalOffer),
   COURSES("Courses", Icons.Default.School),
+  PLACEMENTS("Placements", Icons.Default.WorkspacePremium),
+  JOB_APPLY("Careers & Jobs", Icons.Default.Work),
+  ONLINE_CLASSES("English & Arabic", Icons.Default.Language),
   ABOUT("About", Icons.Default.Info),
   WHY_US("Why Us", Icons.Default.Star),
   FAQ("FAQ", Icons.AutoMirrored.Filled.Help),
@@ -237,6 +243,9 @@ fun NedianConnectApp(
           Screen.HOME,
           Screen.FEES,
           Screen.COURSES,
+          Screen.PLACEMENTS,
+          Screen.JOB_APPLY,
+          Screen.ONLINE_CLASSES,
           Screen.ABOUT,
           Screen.WHY_US,
           Screen.FAQ,
@@ -409,12 +418,16 @@ fun NedianConnectApp(
             HomeScreen(
               courses = courses,
               instituteInfo = instituteInfo,
+              placementStories = placementStories,
               instituteNotice = instituteNotice,
               onNavigateToCourses = { currentScreen = Screen.COURSES },
               onNavigateToFees = { currentScreen = Screen.FEES },
+              onNavigateToPlacements = { currentScreen = Screen.PLACEMENTS },
               onNavigateToAbout = { currentScreen = Screen.ABOUT },
               onNavigateToWhyUs = { currentScreen = Screen.WHY_US },
               onNavigateToFaq = { currentScreen = Screen.FAQ },
+              onNavigateToStudentPortal = { currentScreen = Screen.ONLINE_CLASSES },
+              onNavigateToJobApply = { currentScreen = Screen.JOB_APPLY },
               onCourseInquiry = { course ->
                 openWhatsApp(
                   context,
@@ -513,6 +526,39 @@ fun NedianConnectApp(
                 openWhatsApp(context, activePhone, appointmentMessage)
               },
               onGetDirections = { openDirections(context, instituteInfo.location) }
+            )
+          }
+
+          Screen.PLACEMENTS -> {
+            PlacementsScreen(
+              stories = placementStories,
+              onWhatsAppInquiry = {
+                openWhatsApp(
+                  context,
+                  activePhone,
+                  "Hello ${instituteInfo.name}, I would like to inquire about course placements and alumni career opportunities."
+                )
+              }
+            )
+          }
+
+          Screen.JOB_APPLY -> {
+            JobApplyScreen(
+              onWhatsAppInquiry = { message ->
+                openWhatsApp(context, activePhone, message)
+              }
+            )
+          }
+
+          Screen.ONLINE_CLASSES -> {
+            OnlineLanguageClassesScreen(
+              onEnrollWhatsApp = { courseTitle ->
+                openWhatsApp(
+                  context,
+                  activePhone,
+                  "Hello ${instituteInfo.name}, I would like to join the online live class for $courseTitle."
+                )
+              }
             )
           }
 

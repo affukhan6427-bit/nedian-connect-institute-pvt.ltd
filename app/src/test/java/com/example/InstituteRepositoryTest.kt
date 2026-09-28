@@ -27,7 +27,7 @@ class InstituteRepositoryTest {
   fun setUp() {
     context = ApplicationProvider.getApplicationContext()
     // Clear preferences
-    context.getSharedPreferences("nedian_institute_prefs", Context.MODE_PRIVATE).edit().clear().commit()
+    context.getSharedPreferences("nedian_connect_prefs", Context.MODE_PRIVATE).edit().clear().commit()
     repository = InstituteRepository(context)
   }
 
