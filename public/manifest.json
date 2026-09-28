@@ -1,0 +1,25 @@
+{
+  "name": "NEDIAN CONNECT INSTITUTE PVT. LTD.",
+  "short_name": "Nedian Connect",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0b2545",
+  "theme_color": "#0284c7",
+  "description": "NEDIAN CONNECT INSTITUTE PVT. LTD. - Official application for computer course fees, duration, enrollment, and careers in Chakarchauda, Nepal.",
+  "icons": [
+    {
+      "src": "images/app_logo.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "images/app_logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}

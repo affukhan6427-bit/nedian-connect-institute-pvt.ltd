@@ -1,0 +1,6 @@
+{
+  "name": "Nedian Connect",
+  "description": "NEDIAN CONNECT INSTITUTE PVT. LTD. - Official application for computer course fees, duration, and enrollment in Chakarchauda, Nepal.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
